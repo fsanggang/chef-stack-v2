@@ -15,6 +15,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # because of weirdness around *.1 addresses
   master_ip = "10.0.10.2"
 
+  # the chef server
+  config.vm.define "chef-master" do |chef|
+    chef.vm.hostname = "chef-master"
+  end
+
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   # config.vm.box_url = "http://domain.com/path/to/above.box"
