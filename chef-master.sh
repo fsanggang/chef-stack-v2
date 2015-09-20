@@ -1,0 +1,1 @@
+sudo dpkg -i /vagrant/chef-server-core_12.2.0-1_amd64.deb
