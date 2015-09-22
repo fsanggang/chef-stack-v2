@@ -19,6 +19,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "chef-master" do |chef|
     chef.vm.hostname = "chef-master"
     chef.vm.provision "shell", path: "chef-master.sh"
+
+    chef.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+      v.cpus = 1
+    end
   end
 
   # The url from where the 'config.vm.box' box will be fetched if it
