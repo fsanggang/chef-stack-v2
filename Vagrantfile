@@ -24,6 +24,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.memory = 2048
       v.cpus = 1
     end
+
+    chef.vm.network "private_network", ip: master_ip
   end
 
   # The url from where the 'config.vm.box' box will be fetched if it
