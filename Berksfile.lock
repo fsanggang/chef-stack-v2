@@ -1,0 +1,13 @@
+DEPENDENCIES
+  postgresql (~> 3.4.20)
+
+GRAPH
+  apt (2.9.2)
+  build-essential (2.2.4)
+  chef-sugar (3.1.1)
+  openssl (4.4.0)
+    chef-sugar (>= 3.1.1)
+  postgresql (3.4.21)
+    apt (>= 1.9.0)
+    build-essential (>= 0.0.0)
+    openssl (~> 4.0)
