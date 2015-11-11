@@ -48,8 +48,12 @@ sudo dpkg -i /vagrant/chef_12.4.1-1_amd64.deb;
 
     db.vm.provision "chef_client" do |cc|
       cc.chef_server_url = "https://chef-master/organizations/chef-stack-demo"
+
       cc.validation_client_name = "chef-stack-demo-validator" # this must be #{organisation_name}-validator
+
       cc.validation_key_path = "files/validator.pem"
+
+      cc.add_recipe "postgresql"
     end
 
     db.vm.provider "virtualbox" do |v|
