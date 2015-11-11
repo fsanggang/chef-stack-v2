@@ -1,0 +1,31 @@
+{
+  "postgresql": {
+    "config": {
+      "ssl": false,
+      "listen_addresses": "*"
+    },
+    "pg_hba": [
+      {
+        "type": "host",
+        "db": "all",
+        "user": "postgres",
+        "addr": "127.0.0.1/32",
+        "method": "trust"
+      },
+      {
+        "type": "host",
+        "db": "all",
+        "user": "showgizmo",
+        "addr": "127.0.0.1/32",
+        "method": "md5"
+      },
+      {
+        "type": "host",
+        "db": "all",
+        "user": "showgizmo",
+        "addr": "10.0.0.0/11",
+        "method": "md5"
+      }
+    ]
+  }
+}

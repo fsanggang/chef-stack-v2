@@ -1,6 +1,9 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
 
+
+postgresql_json = JSON.parse(File.read("files/custom_json/postgresql.json"))
+
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
@@ -54,6 +57,7 @@ sudo dpkg -i /vagrant/chef_12.4.1-1_amd64.deb;
       cc.validation_key_path = "files/validator.pem"
 
       cc.add_recipe "postgresql"
+      cc.json = postgresql_json
     end
 
     db.vm.provider "virtualbox" do |v|
