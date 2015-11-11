@@ -28,6 +28,32 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.vm.network "private_network", ip: master_ip
   end
 
+chef_master_str = %{
+if ! grep #{master_ip} /etc/hosts; then
+echo "#{master_ip} chef-master" >> /etc/hosts
+fi
+}
+
+chef_client_str = %{
+sudo dpkg -i /vagrant/chef_12.4.1-1_amd64.deb;
+}
+
+  # the database server
+  config.vm.define "database" do |db|
+    db.vm.hostname = "database"
+
+    db.vm.provision "shell", inline: chef_master_str
+
+    db.vm.provision "shell", inline: chef_client_str
+
+    db.vm.provider "virtualbox" do |v|
+      v.memory = 512
+      v.cpus = 1
+    end
+
+    db.vm.network "private_network", ip: "10.0.10.10"
+  end
+
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
   # config.vm.box_url = "http://domain.com/path/to/above.box"

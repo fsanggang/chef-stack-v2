@@ -1,4 +1,5 @@
 .vagrant
 chef-server-core_12.2.0-1_amd64.deb
+chef_12.4.1-1_amd64.deb
 files/admin.pem
 files/validator.pem
